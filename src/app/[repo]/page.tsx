@@ -1,5 +1,3 @@
-// app/repos/[repo]/commits/page.tsx
-
 import Link from 'next/link';
 
 // Revalidate every 60 seconds (ISR)
@@ -61,11 +59,11 @@ export default async function CommitsPage({ params }: CommitsPageProps) {
     const commits = await getCommits(repo);
 
     return (
-        <div className="bg-black min-h-screen text-white">
-            {/* Header section (like kernel.org’s “index : kernel/git/torvalds/linux.git”) */}
+        <div className="min-h-screen text-white">
+            {/* Header section with dynamic repo name */}
             <header className="border-b border-gray-700 p-4">
                 <h1 className="text-xl">
-                    index : mirror/git/xanmoy/sources.git
+                    index : mirror/git/xanmoy/{repo}.git
                 </h1>
             </header>
 
@@ -89,7 +87,7 @@ export default async function CommitsPage({ params }: CommitsPageProps) {
                                 <tr key={commit.sha} className="border-b border-gray-800">
                                     <td className="px-2 py-1">
                                         <Link
-                                            href={`/repos/${repo}/commits/${commit.sha}`}
+                                            href={`/${repo}/${commit.sha}`}
                                             className="text-blue-400 hover:underline"
                                         >
                                             {commit.commit.message}
