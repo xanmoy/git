@@ -1,7 +1,15 @@
 export const revalidate = 60; // Revalidate every 60 seconds
 
 // List of selected repository names
-const selectedRepos = ['notion-desktop', 'whatsapp-desktop-client', 'chatgpt-desktop-client'];
+const selectedRepos = ['notion-desktop',
+    'whatsapp-desktop-client',
+    'chatgpt-desktop-client',
+    'ownai',
+    'xeoly',
+    'wther',
+    'medinova',
+    'drawflow',
+];
 
 interface Repo {
     id: number;
@@ -50,20 +58,20 @@ export default async function ReposPage() {
                 <h2 className="text-2xl font-semibold text-gray-300 mb-4">Selected Projects</h2>
                 <ul className="space-y-4">
                     {repos.map((repo: Repo) => (
-                        <li key={repo.id} className="flex justify-between items-center p-4 border-b border-gray-200 rounded-lg">
+                        <li key={repo.id} className="flex justify-between items-center p-4 border-b border-gray-200">
                             <div>
                                 <a
-                                    href={`/repos/${repo.name}`}
+                                    href={`/${repo.name}`}
                                     
                                     rel="noopener noreferrer"
                                     className="text-xl font-semibold text-blue-600 hover:text-blue-800"
                                 >
                                     {repo.name}
                                 </a>
-                                <p className="text-gray-600 text-sm mt-1">{repo.description || 'No description provided'}</p>
+                                <p className="text-gray-400 text-sm mt-1">{repo.description || 'No description provided'}</p>
                             </div>
                             <a
-                                href={`/repos/${repo.name}`}
+                                href={`/${repo.name}`}
                                 className="text-blue-600 hover:underline"
                             >
                                 View Details
